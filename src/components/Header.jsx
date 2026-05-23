@@ -1,7 +1,8 @@
 import React from "react";
 import { PiggyBank, Trash2 } from "lucide-react";
 
-const Header = ({ clearData }) => {
+const Header = ({ transData = [], transDataSetter }) => {
+    
     return (
         <div className="flex items-center justify-between">
             <div className="flex items-stretch gap-2">
@@ -18,7 +19,12 @@ const Header = ({ clearData }) => {
             <div className="clear-btn">
                 <button
                     onClick={() => {
-                        clearData([]);
+                        let res = transData.length && confirm(
+                            "Delete all transactions? This cannot be undone."
+                        );
+                        if (res) {
+                            transDataSetter([]);
+                        }
                     }}
                     className="lg:text-md flex items-center gap-1 rounded-xl border-2 border-(--primary-border-color) bg-(--secondery-bg-color) px-3 py-2 text-sm transition-colors hover:cursor-pointer hover:bg-[rgb(45,45,55)] lg:gap-2 lg:px-4 lg:py-3"
                 >
