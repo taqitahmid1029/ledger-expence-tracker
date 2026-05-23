@@ -1,32 +1,45 @@
 import React from "react";
 import DashCards from "./DashCards";
 
-const Dashboard = () => {
+const Dashboard = ({
+    transData = [],
+    incomeData = 0,
+    expenseData = 0,
+    rateData = 0,
+}) => {
     return (
         <div className="grid grid-cols-3 grid-rows-2 gap-4 my-4">
             <DashCards
-                title="Net Balance"
-                value={0}
-                subtitle="No transactions yet"
-                varient="balance"
+                title="NET BALANCE"
+                value={incomeData - expenseData}
+                subtitle={
+                    transData.length
+                        ? `${transData.length} Transctions`
+                        : "No transaction yet"
+                }
+                varient="BALANCE"
             />
             <DashCards
-                title="Total Income"
-                value={0}
-                subtitle={`${0} Transactions`}
-                varient="income"
+                title="TOTAL INCOME"
+                value={incomeData}
+                subtitle={`${transData.length} Transactions`}
+                varient="INCOME"
             />
             <DashCards
-                title="Total Expenses"
-                value={0}
-                subtitle={`${0} Transactions`}
-                varient="expense"
+                title="TOTAL EXPENSES"
+                value={expenseData}
+                subtitle={`${transData.length} Transactions`}
+                varient="EXPENSE"
             />
             <DashCards
-                title="Savings Rate"
-                value={0}
-                subtitle="add income to calculate"
-                varient="saving"
+                title="SAVINGS RATE"
+                value={rateData}
+                subtitle={
+                    transData.length
+                        ? `${transData.length} Transactions`
+                        : "add income to calculate"
+                }
+                varient="SAVINGS"
             />
         </div>
     );

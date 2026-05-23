@@ -1,19 +1,19 @@
 import React from "react";
 
-const varientStyles = {
-    balance: {
+const VARIENT_STYLES = {
+    BALANCE: {
         color: "text-amber-400",
         size: "text-5xl",
     },
-    income: {
+    INCOME: {
         color: "text-green-400",
         size: "text-3xl",
     },
-    expense: {
+    EXPENSE: {
         color: "text-red-400",
         size: "text-3xl",
     },
-    saving: {
+    SAVINGS: {
         color: "text-amber-400",
         size: "text-3xl",
     },
@@ -21,19 +21,21 @@ const varientStyles = {
 
 const DashCards = ({
     title = "",
-    value = "",
+    value = 0,
     subtitle = "",
-    varient = "balance",
+    varient = "BALANCE",
 }) => {
-    const styles = varientStyles[varient];
+    const styles = VARIENT_STYLES[varient];
 
     return (
         <div
-            className={`${varient === "balance" ? "col-start-1 col-end-4" : ""} w-full border-2 border-(--primary-border-color) rounded-xl bg-(--secondery-bg-color) p-4`}
+            className={`${varient === "BALANCE" ? "col-start-1 col-end-4" : ""} w-full border-2 border-(--primary-border-color) rounded-xl bg-(--secondery-bg-color) p-4`}
         >
             <div className="text-(--secondery-text-color)">{title}</div>
             <div className={`py-1 ${styles.color} ${styles.size}`}>
-                <b>$ {value}</b>
+                {varient !== "SAVINGS" ? <b>&#2547; </b> : ""}
+                <b>{value.toLocaleString("en-IN")}</b>
+                {varient === "SAVINGS" ? <b> %</b> : ""}
             </div>
             <div className="text-(--secondery-text-color)">{subtitle}</div>
         </div>

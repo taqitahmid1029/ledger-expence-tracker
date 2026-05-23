@@ -1,34 +1,28 @@
 import React from "react";
-import TransectionCards from "./TransectionCards";
+import TransCards from "./TransCards";
 
-const Transection = () => {
-    console.log(
-        "transction list and 'X' button will be dynamically render after handling local storage",
-    );
+const Transection = ({ history = [], historySetter }) => {
     return (
         <div className="w-[60%]">
             <span className="text-(--secondery-text-color)">TRANSECTIONS</span>
-            <TransectionCards
-                isEmpty={false}
-                description="shjvbd"
-                catagory="Housing"
-                date="2026-04-30"
-                value={45}
-            />
-            <TransectionCards
-                isEmpty={false}
-                description="jhsvb"
-                catagory="Freelance"
-                date="2026-01-30"
-                value={25}
-            />
-            <TransectionCards
-                isEmpty={false}
-                description="sjidvb"
-                catagory="Education"
-                date="2026-06-30"
-                value={5}
-            />
+            {history.length ? (
+                history.map((element) => (
+                    <TransCards
+                        key={element.id}
+                        history={history}
+                        historySetter={historySetter}
+                        isEmpty={false}
+                        id={element.id}
+                        description={element.description}
+                        category={element.category}
+                        date={element.date}
+                        value={element.amount}
+                        type={element.type}
+                    />
+                ))
+            ) : (
+                <TransCards isEmpty={true} />
+            )}
         </div>
     );
 };

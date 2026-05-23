@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const expenseCatagories = [
+const EXPENSE_CATS = [
     "Food & Drink",
     "Transport",
     "Shopping",
@@ -12,7 +12,7 @@ const expenseCatagories = [
     "Other",
 ];
 
-const incomeCatagories = [
+const INCOME_CATS = [
     "Salary",
     "Freelance",
     "Investment",
@@ -21,14 +21,19 @@ const incomeCatagories = [
     "Other",
 ];
 
-const NewEntry = () => {
-    const [type, setType] = useState("expense");
-    const [amount, setAmount] = useState();
-    const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+const NewEntry = ({ history = [], historySetter }) => {
+    const generateID = () =>
+        Math.random().toString(36).slice(2) + Date.now().toString(36);
+
+    const [amount, setAmount] = useState("");
+    const [category, setCategory] = useState("Other");
+    const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
     const [description, setDescription] = useState("");
+    const [type, setType] = useState("expense");
+
     return (
         <div className="bg-(--secondery-bg-color) flex flex-col gap-4 border-2 border-(--primary-border-color) rounded-lg w-[40%] p-4">
-            <div className="text-(--secondery-text-color)">New Entry</div>
+            <div className="text-(--secondery-text-color)">NEW ENTRY</div>
             <div className="">
                 <button
                     onClick={() => {
@@ -36,7 +41,7 @@ const NewEntry = () => {
                     }}
                     className={`${type === "expense" ? "bg-red-400 text-red-800 border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-l-lg`}
                 >
-                    Expense
+                    EXPENSE
                 </button>
                 <button
                     onClick={() => {
@@ -44,20 +49,20 @@ const NewEntry = () => {
                     }}
                     className={`${type === "income" ? "bg-green-400 text-green-800 border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-r-lg`}
                 >
-                    Income
+                    INCOME
                 </button>
             </div>
             <div className="flex flex-row gap-2">
                 <div>
                     <div className="text-(--secondery-text-color)">
-                        &nbsp;Amount
+                        &nbsp;AMOUNT
                     </div>
                     <input
                         type="number"
                         name="amount"
                         id="amount"
                         value={amount}
-                        placeholder="Amount"
+                        placeholder="0.00"
                         onChange={() => {
                             setAmount(event.target.value);
                         }}
@@ -66,7 +71,7 @@ const NewEntry = () => {
                 </div>
                 <div>
                     <div className="text-(--secondery-text-color)">
-                        &nbsp;Date
+                        &nbsp;DATE
                     </div>
                     <input
                         type="date"
@@ -81,7 +86,7 @@ const NewEntry = () => {
                 </div>
             </div>
             <div>
-                <div className="text-(--secondery-text-color)">Description</div>
+                <div className="text-(--secondery-text-color)">DESCRIPTION</div>
                 <input
                     type="text"
                     name="description"
@@ -95,19 +100,23 @@ const NewEntry = () => {
                 />
             </div>
             <div>
-                <div className="text-(--secondery-text-color)">Catagory</div>
+                <div className="text-(--secondery-text-color)">CATEGORY</div>
                 <select
-                    name="catagory"
-                    id="catagory"
+                    name="category"
+                    id="category"
+                    value={category}
+                    onChange={() => {
+                        setCategory(event.target.value);
+                    }}
                     className="bg-(--primary-bg-color) px-2 py-1 border-(--primary-border-color) border-2 w-full rounded-lg"
                 >
                     {type === "expense"
-                        ? expenseCatagories.map((e) => (
+                        ? EXPENSE_CATS.map((e) => (
                               <option key={e} value={e}>
                                   {e}
                               </option>
                           ))
-                        : incomeCatagories.map((i) => (
+                        : INCOME_CATS.map((i) => (
                               <option key={i} value={i}>
                                   {i}
                               </option>
@@ -115,8 +124,30 @@ const NewEntry = () => {
                 </select>
             </div>
             <div>
-                <button className="py-2 px-4 rounded-lg w-full border-(--primary-border-color) border-2 bg-blue-600">
-                    Add Entry
+                <button
+                    onClick={() => {
+                        if (amount === "") {
+                            alert("Amount is required");
+                        } else if (description === "") {
+                            alert("Description is required");
+                        } else {
+                            let newTrans = {
+                                id: generateID(),
+                                type: type,
+                                amount: parseFloat(amount),
+                                description: description,
+                                category: category,
+                                date: date,
+                            };
+                            historySetter([...history, newTrans]);
+                            setAmount("");
+                            setDescription("");
+                            setCategory("Other");
+                        }
+                    }}
+                    className="py-2 px-4 rounded-lg w-full border-(--primary-border-color) border-2 bg-blue-600"
+                >
+                    ADD ENTRY
                 </button>
             </div>
         </div>

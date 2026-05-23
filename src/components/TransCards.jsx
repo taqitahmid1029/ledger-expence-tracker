@@ -17,7 +17,7 @@ import {
     X,
 } from "lucide-react";
 
-const catagoryEmojies = {
+const CATS_EMOJIES = {
     "Food & Drink": <CupSoda strokeWidth={1} />,
     Transport: <Bus strokeWidth={1} />,
     Shopping: <BaggageClaim strokeWidth={1} />,
@@ -34,19 +34,20 @@ const catagoryEmojies = {
     Bonus: <Star strokeWidth={1} />,
 };
 
-const TransectionCards = ({
+const TransCards = ({
+    history = [],
+    historySetter,
     isEmpty = true,
+    id,
     description = "",
-    catagory = "",
+    category = "",
     date = "",
     value = 0,
+    type = "expense",
 }) => {
     if (isEmpty) {
         return (
             <>
-                <div className="text-(--secondery-text-color) text-lg">
-                    Transactions
-                </div>
                 <div className="w-full flex flex-col items-center justify-center h-52">
                     <div>No transactions yet.</div>
                     <div>Add your first entry above!</div>
@@ -58,19 +59,29 @@ const TransectionCards = ({
     return (
         <div className="flex flex-row justify-between items-center rounded-lg border-2 border-(--primary-border-color) bg-(--secondery-bg-color) p-4 my-4">
             <div className="flex gap-2 items-center">
-                <div>{catagoryEmojies[catagory]}</div>
+                <div>{CATS_EMOJIES[category]}</div>
                 <div>
                     <div className="text-md">{description}</div>
                     <div className="text-sm text-(--secondery-text-color)">
-                        <span>{catagory}</span>
+                        <span>{category}</span>
                         &nbsp;-&nbsp;
                         <span>{date}</span>
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row items-center gap-3">
-                <span className="text-xl text-green-400">{value}</span>
-                <button>
+            <div className="flex flex-row items-center gap-3 text-xl">
+                {type === "expense" ? (
+                    <span className="text-red-400">- {value} &#2547;</span>
+                ) : (
+                    <span className="text-green-400">+ {value} &#2547;</span>
+                )}
+                <button
+                    onClick={() => {
+                        historySetter((prev) =>
+                            prev.filter((element) => element.id !== id),
+                        );
+                    }}
+                >
                     <X strokeWidth={1} />
                 </button>
             </div>
@@ -78,4 +89,4 @@ const TransectionCards = ({
     );
 };
 
-export default TransectionCards;
+export default TransCards;
