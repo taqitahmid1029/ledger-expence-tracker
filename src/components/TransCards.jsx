@@ -57,7 +57,7 @@ const TransCards = ({
     }
 
     return (
-        <div className="flex flex-row justify-between items-center rounded-lg border-2 border-(--primary-border-color) bg-(--secondery-bg-color) p-4 my-4">
+        <div className="flex flex-row justify-between items-center rounded-lg border-2 border-(--primary-border-color) bg-(--secondery-bg-color) p-4 my-4 hover:bg-[rgb(45,45,55)] transition-colors">
             <div className="flex gap-2 items-center">
                 <div>{CATS_EMOJIES[category]}</div>
                 <div>
@@ -81,6 +81,7 @@ const TransCards = ({
                             prev.filter((element) => element.id !== id),
                         );
                     }}
+                    className="hover:bg-red-400 hover:text-black transition-colors p-1 rounded-md"
                 >
                     <X strokeWidth={1} />
                 </button>

@@ -1,8 +1,8 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Dashboard from "./components/Dashboard";
 import NewEntry from "./components/NewEntry";
-import Transaction from "./components/Transection";
+import Transaction from "./components/Transaction";
 
 const App = () => {
     const KEY = "ledger-v1";
@@ -30,7 +30,7 @@ const App = () => {
     }, [trans]);
 
     return (
-        <main className="max-w-216 m-auto px-8 py-6">
+        <main className="max-w-216 m-auto px-8 py-6 text-(--primary-text-color)">
             <Header clearData={setTrans} />
             <Dashboard
                 transData={trans}

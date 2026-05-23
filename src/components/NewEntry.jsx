@@ -39,7 +39,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     onClick={() => {
                         setType("expense");
                     }}
-                    className={`${type === "expense" ? "bg-red-400 text-red-800 border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-l-lg`}
+                    className={`${type === "expense" ? "bg-red-400 text-black border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-l-lg hover:cursor-pointer`}
                 >
                     EXPENSE
                 </button>
@@ -47,7 +47,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     onClick={() => {
                         setType("income");
                     }}
-                    className={`${type === "income" ? "bg-green-400 text-green-800 border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-r-lg`}
+                    className={`${type === "income" ? "bg-green-400 text-black border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-r-lg hover:cursor-pointer`}
                 >
                     INCOME
                 </button>
@@ -63,7 +63,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                         id="amount"
                         value={amount}
                         placeholder="0.00"
-                        onChange={() => {
+                        onChange={(event) => {
                             setAmount(event.target.value);
                         }}
                         className="w-full bg-(--primary-bg-color) px-2 py-1 border-2 border-(--primary-border-color) rounded-lg"
@@ -78,7 +78,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                         name="date"
                         id="date"
                         value={date}
-                        onChange={() => {
+                        onChange={(event) => {
                             setDate(event.target.value);
                         }}
                         className="w-full bg-(--primary-bg-color) px-2 py-1 border-2 border-(--primary-border-color) rounded-lg"
@@ -93,7 +93,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     id="description"
                     placeholder="What was this for?"
                     value={description}
-                    onChange={() => {
+                    onChange={(event) => {
                         setDescription(event.target.value);
                     }}
                     className="bg-(--primary-bg-color) px-2 py-1 border-(--primary-border-color) border-2 w-full rounded-lg"
@@ -105,7 +105,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     name="category"
                     id="category"
                     value={category}
-                    onChange={() => {
+                    onChange={(event) => {
                         setCategory(event.target.value);
                     }}
                     className="bg-(--primary-bg-color) px-2 py-1 border-(--primary-border-color) border-2 w-full rounded-lg"
@@ -145,7 +145,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                             setCategory("Other");
                         }
                     }}
-                    className="py-2 px-4 rounded-lg w-full border-(--primary-border-color) border-2 bg-blue-600"
+                    className="py-2 px-4 rounded-lg w-full border-(--primary-border-color) border-2 bg-blue-600 transition-colors hover:bg-blue-950 hover:cursor-pointer"
                 >
                     ADD ENTRY
                 </button>

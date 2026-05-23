@@ -20,7 +20,7 @@ const Header = ({ clearData }) => {
                     onClick={() => {
                         clearData([]);
                     }}
-                    className="flex gap-2 items-center text-md bg-(--secondery-bg-color) border-2 border-(--primary-border-color) px-4 py-2 rounded-2xl"
+                    className="flex gap-2 items-center text-md bg-(--secondery-bg-color) border-2 border-(--primary-border-color) px-4 py-2 rounded-2xl hover:cursor-pointer hover:bg-[rgb(45,45,55)] transition-colors"
                 >
                     <Trash2 size={16} strokeWidth={1} /> Clear All
                 </button>

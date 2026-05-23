@@ -1,7 +1,7 @@
 import React from "react";
 import TransCards from "./TransCards";
 
-const Transection = ({ history = [], historySetter }) => {
+const Transaction = ({ history = [], historySetter }) => {
     return (
         <div className="w-[60%]">
             <span className="text-(--secondery-text-color)">TRANSECTIONS</span>
@@ -27,4 +27,4 @@ const Transection = ({ history = [], historySetter }) => {
     );
 };
 
-export default Transection;
+export default Transaction;
