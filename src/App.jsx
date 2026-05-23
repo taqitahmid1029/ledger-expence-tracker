@@ -7,7 +7,7 @@ import Transaction from "./components/Transaction";
 const App = () => {
     const KEY = "ledger-v1";
     const [trans, setTrans] = useState(
-        () => JSON.parse(localStorage.getItem(KEY)) || [],
+        () => JSON.parse(localStorage.getItem(KEY)) || []
     );
     const [income, setIncome] = useState(0);
     const [expense, setExpense] = useState(0);
@@ -30,7 +30,7 @@ const App = () => {
     }, [trans]);
 
     return (
-        <main className="max-w-216 m-auto px-8 py-6 text-(--primary-text-color)">
+        <main className="m-auto max-w-216 px-8 py-6 text-(--primary-text-color)">
             <Header clearData={setTrans} />
             <Dashboard
                 transData={trans}
@@ -38,7 +38,7 @@ const App = () => {
                 expenseData={expense}
                 rateData={rate}
             />
-            <div className="flex items-start gap-4">
+            <div className="flex flex-col gap-4 md:flex-row">
                 <NewEntry history={trans} historySetter={setTrans} />{" "}
                 <Transaction history={trans} historySetter={setTrans} />{" "}
             </div>

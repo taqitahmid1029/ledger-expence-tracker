@@ -16,7 +16,7 @@ View the application here: **[https://taqitahmid1029.github.io/ledger-expence-tr
 - **Real-time Dashboard** - View aggregated financial data including total income, expenses, and savings rate
 - **Data Persistence** - Local storage integration ensures data survives page reloads and browser sessions
 - **Transaction History** - Complete transaction log with deletion capabilities for error correction
-- **Responsive Design** - Clean and professional user interface optimized for various screen sizes
+- **Responsive Design** - Fully responsive interface optimized for both mobile and desktop devices with seamless user experience across all screen sizes
 - **Icon Integration** - Lucide React icons for enhanced visual clarity and user experience
 
 ## Technology Stack
@@ -24,6 +24,7 @@ View the application here: **[https://taqitahmid1029.github.io/ledger-expence-tr
 - **React** (v19.2.6) - Frontend framework with hooks (useState and useEffect) for state management
 - **Tailwind CSS** (v4.3.0) - Utility-first CSS framework for responsive styling
 - **Lucide React** (v1.16.0) - Icon library for UI enhancements
+- **Prettier with Tailwind Plugin** - Code formatter ensuring consistent code style and optimized class ordering
 - **GitHub Pages** - Hosting and deployment platform
 - **Vite** (v8.0.12) - Fast build tool and development server
 - **ESLint** - Code quality and linting
@@ -34,9 +35,10 @@ This project demonstrates proficiency in:
 - React component architecture and prop-based data flow
 - State management using React hooks (useState and useEffect)
 - Local storage implementation for data persistence
-- Responsive design patterns with Tailwind CSS
+- Responsive design patterns with Tailwind CSS for mobile and desktop optimization
 - Component composition and prop drilling
 - Integration of third-party icon libraries
+- Code formatting and linting with Prettier and Tailwind plugins
 
 ## Installation & Setup
 

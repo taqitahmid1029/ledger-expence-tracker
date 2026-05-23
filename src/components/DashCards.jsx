@@ -29,15 +29,19 @@ const DashCards = ({
 
     return (
         <div
-            className={`${varient === "BALANCE" ? "col-start-1 col-end-4" : ""} w-full border-2 border-(--primary-border-color) rounded-xl bg-(--secondery-bg-color) p-4`}
+            className={`${varient === "BALANCE" ? "sm:col-start-1 sm:col-end-3 md:col-end-4" : ""} w-full rounded-xl border-2 border-(--primary-border-color) bg-(--secondery-bg-color) p-4`}
         >
-            <div className="text-(--secondery-text-color)">{title}</div>
+            <div className="text-md text-(--secondery-text-color) lg:text-lg">
+                {title}
+            </div>
             <div className={`py-1 ${styles.color} ${styles.size}`}>
                 {varient !== "SAVINGS" ? <b>&#2547; </b> : ""}
                 <b>{value.toLocaleString("en-IN")}</b>
                 {varient === "SAVINGS" ? <b> %</b> : ""}
             </div>
-            <div className="text-(--secondery-text-color)">{subtitle}</div>
+            <div className="lg:text-md text-sm text-(--secondery-text-color)">
+                {subtitle}
+            </div>
         </div>
     );
 };

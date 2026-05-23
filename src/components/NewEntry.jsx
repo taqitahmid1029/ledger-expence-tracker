@@ -32,14 +32,16 @@ const NewEntry = ({ history = [], historySetter }) => {
     const [type, setType] = useState("expense");
 
     return (
-        <div className="bg-(--secondery-bg-color) flex flex-col gap-4 border-2 border-(--primary-border-color) rounded-lg w-[40%] p-4">
-            <div className="text-(--secondery-text-color)">NEW ENTRY</div>
+        <div className="lg:text-md flex w-full flex-col gap-4 rounded-lg border-2 border-(--primary-border-color) bg-(--secondery-bg-color) p-4 text-sm md:w-[40%]">
+            <div className="text-md text-(--secondery-text-color) lg:text-lg">
+                NEW ENTRY
+            </div>
             <div className="">
                 <button
                     onClick={() => {
                         setType("expense");
                     }}
-                    className={`${type === "expense" ? "bg-red-400 text-black border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-l-lg hover:cursor-pointer`}
+                    className={`${type === "expense" ? "border-transparent bg-red-400 text-black" : "border-(--primary-border-color) text-(--primary-text-color)"} w-[50%] rounded-l-lg border-2 p-2 text-center hover:cursor-pointer`}
                 >
                     EXPENSE
                 </button>
@@ -47,43 +49,39 @@ const NewEntry = ({ history = [], historySetter }) => {
                     onClick={() => {
                         setType("income");
                     }}
-                    className={`${type === "income" ? "bg-green-400 text-black border-transparent" : "text-(--primary-text-color) border-(--primary-border-color)"} border-2 w-[50%] text-center p-2 rounded-r-lg hover:cursor-pointer`}
+                    className={`${type === "income" ? "border-transparent bg-green-400 text-black" : "border-(--primary-border-color) text-(--primary-text-color)"} w-[50%] rounded-r-lg border-2 p-2 text-center hover:cursor-pointer`}
                 >
                     INCOME
                 </button>
             </div>
-            <div className="flex flex-row gap-2">
-                <div>
-                    <div className="text-(--secondery-text-color)">
-                        &nbsp;AMOUNT
-                    </div>
-                    <input
-                        type="number"
-                        name="amount"
-                        id="amount"
-                        value={amount}
-                        placeholder="0.00"
-                        onChange={(event) => {
-                            setAmount(event.target.value);
-                        }}
-                        className="w-full bg-(--primary-bg-color) px-2 py-1 border-2 border-(--primary-border-color) rounded-lg"
-                    />
+            <div>
+                <div className="text-(--secondery-text-color)">
+                    &nbsp;AMOUNT
                 </div>
-                <div>
-                    <div className="text-(--secondery-text-color)">
-                        &nbsp;DATE
-                    </div>
-                    <input
-                        type="date"
-                        name="date"
-                        id="date"
-                        value={date}
-                        onChange={(event) => {
-                            setDate(event.target.value);
-                        }}
-                        className="w-full bg-(--primary-bg-color) px-2 py-1 border-2 border-(--primary-border-color) rounded-lg"
-                    />
-                </div>
+                <input
+                    type="number"
+                    name="amount"
+                    id="amount"
+                    value={amount}
+                    placeholder="0.00"
+                    onChange={(event) => {
+                        setAmount(event.target.value);
+                    }}
+                    className="w-full rounded-lg border-2 border-(--primary-border-color) bg-(--primary-bg-color) px-2 py-1"
+                />
+            </div>
+            <div>
+                <div className="text-(--secondery-text-color)">&nbsp;DATE</div>
+                <input
+                    type="date"
+                    name="date"
+                    id="date"
+                    value={date}
+                    onChange={(event) => {
+                        setDate(event.target.value);
+                    }}
+                    className="w-full rounded-lg border-2 border-(--primary-border-color) bg-(--primary-bg-color) px-2 py-1"
+                />
             </div>
             <div>
                 <div className="text-(--secondery-text-color)">DESCRIPTION</div>
@@ -96,7 +94,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     onChange={(event) => {
                         setDescription(event.target.value);
                     }}
-                    className="bg-(--primary-bg-color) px-2 py-1 border-(--primary-border-color) border-2 w-full rounded-lg"
+                    className="w-full rounded-lg border-2 border-(--primary-border-color) bg-(--primary-bg-color) px-2 py-1"
                 />
             </div>
             <div>
@@ -108,7 +106,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                     onChange={(event) => {
                         setCategory(event.target.value);
                     }}
-                    className="bg-(--primary-bg-color) px-2 py-1 border-(--primary-border-color) border-2 w-full rounded-lg"
+                    className="w-full rounded-lg border-2 border-(--primary-border-color) bg-(--primary-bg-color) px-2 py-1"
                 >
                     {type === "expense"
                         ? EXPENSE_CATS.map((e) => (
@@ -123,7 +121,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                           ))}
                 </select>
             </div>
-            <div>
+            <div className="pb-4">
                 <button
                     onClick={() => {
                         if (amount === "") {
@@ -145,7 +143,7 @@ const NewEntry = ({ history = [], historySetter }) => {
                             setCategory("Other");
                         }
                     }}
-                    className="py-2 px-4 rounded-lg w-full border-(--primary-border-color) border-2 bg-blue-600 transition-colors hover:bg-blue-950 hover:cursor-pointer"
+                    className="w-full rounded-lg border-2 border-(--primary-border-color) bg-blue-600 px-4 py-2 transition-colors hover:cursor-pointer hover:bg-blue-950"
                 >
                     ADD ENTRY
                 </button>
