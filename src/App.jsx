@@ -56,7 +56,7 @@ const App = () => {
                 rateValue={rate}
             />
             <div className="flex flex-col gap-4 md:flex-row">
-                <NewEntry history={trans} historySetter={setTrans} />{" "}
+                <NewEntry history={trans} historySetter={setTrans} />
                 <Transaction
                     transData={trans}
                     transDataSetter={setTrans}

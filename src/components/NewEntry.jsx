@@ -135,7 +135,14 @@ const NewEntry = ({ history = [], historySetter }) => {
                                 amount: parseFloat(amount),
                                 description: description,
                                 category: category,
-                                date: date,
+                                date: new Date(date).toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        month: "long",
+                                        day: "2-digit",
+                                        year: "numeric",
+                                    }
+                                ),
                             };
                             historySetter([...history, newTrans]);
                             setAmount("");
